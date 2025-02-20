@@ -9,13 +9,13 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {  // ✅ Removed duplicate
+        stage('Checkout') {
             steps {
                 script {
                     checkout scm
                     sh '''
-                        git checkout main  # Ensure you're on the main branch
-                        git pull origin main  # Get the latest updates
+                        git checkout master  
+                        git pull origin master  # Get the latest updates
                         echo "✅ Code checked out successfully!"
                     '''
                 }
@@ -73,7 +73,7 @@ pipeline {
                                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
                                 git add spring-boot-app-manifests/deployment.yml
                                 git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:refs/heads/main
+                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:refs/heads/master
                             else
                                 echo "❌ Error: Deployment file not found!" && exit 1
                             fi
