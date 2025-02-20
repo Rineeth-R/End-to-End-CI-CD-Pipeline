@@ -19,3 +19,6 @@ Automated Deployment → ArgoCD detects image updates in the manifest repo and d
 This pipeline ensures continuous integration, continuous delivery (CI/CD), and GitOps-based deployments to enhance software reliability and efficiency.
 
 ![Project - Architecture](https://github.com/user-attachments/assets/7db647b7-0524-4af0-ba5b-155b5a1fe38d)
+"C:\Users\rajachenthil\Pictures\Screenshots\Screenshot 2025-02-20 131616.png"
+"C:\Users\rajachenthil\Pictures\Screenshots\Screenshot 2025-02-20 131505.png"
+"C:\Users\rajachenthil\Pictures\Screenshots\Screenshot 2025-02-20 131321.png"
