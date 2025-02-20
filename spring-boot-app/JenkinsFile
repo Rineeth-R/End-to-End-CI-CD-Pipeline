@@ -8,10 +8,6 @@ pipeline {
         DOCKER_IMAGE = "rineeth05/ultimate-cicd:${BUILD_NUMBER}"
     }
 
-    tools {
-        maven 'Maven 3.8.6'  // Ensure Jenkins has this Maven tool configured
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -89,16 +85,4 @@ pipeline {
 
                             if [ -f "spring-boot-app-manifests/deployment.yml" ]; then
                                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
-                                git add spring-boot-app-manifests/deployment.yml
-                                git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:refs/heads/master
-                            else
-                                echo "❌ Error: Deployment file not found!" && exit 1
-                            fi
-                        '''
-                    }
-                }
-            }
-        }
-    }
-}
+                                git add spring-boot-app-manifests/deplo
