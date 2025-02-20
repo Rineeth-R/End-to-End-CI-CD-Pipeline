@@ -18,20 +18,18 @@ pipeline {
             }
         }
 
-        stage('Build and Test') {  
-            steps {
-                script {
-                    sh 'ls -ltr'  // Check directory structure
-                    sh '''
-                        if [ -d "spring-boot-app" ]; then
-                            cd spring-boot-app && mvn clean package
-                        else
-                            echo "❌ Error: spring-boot-app directory not found!" && exit 1
-                        fi
-                    '''
-                }
-            }
+        stage('Checkout') {
+    steps {
+        script {
+            checkout scm
+            sh '''
+                git checkout main  # Ensure you're on the main branch
+                git pull origin main  # Get the latest updates
+                echo "✅ Code checked out successfully!"
+            '''
         }
+    }
+}
 
         stage('Static Code Analysis') {
             environment {
