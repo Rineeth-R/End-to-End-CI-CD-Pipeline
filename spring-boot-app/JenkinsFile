@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         SONAR_URL = "http://44.200.195.14:9000"
-        GIT_REPO_NAME = "cicd-pipeline"
+        GIT_REPO_NAME = "End-to-End-CI-CD-Pipeline"
         GIT_USER_NAME = "Rineeth-R"
         DOCKER_IMAGE = "rineeth05/ultimate-cicd:${BUILD_NUMBER}"
     }
