@@ -18,13 +18,18 @@ Testing & Image Creation → If tests pass, a Docker image is built and pushed t
 Automated Deployment → ArgoCD detects image updates in the manifest repo and deploys to Kubernetes.
 This pipeline ensures continuous integration, continuous delivery (CI/CD), and GitOps-based deployments to enhance software reliability and efficiency.
 
+***PROJECT ARCHITECTURE***
 ![Project - Architecture](https://github.com/user-attachments/assets/7db647b7-0524-4af0-ba5b-155b5a1fe38d)
-JENKINS CI -STAGE :- 
+
+
+**JENKINS CI -STAGE :-****** 
 ![Screenshot 2025-02-20 131616](https://github.com/user-attachments/assets/c4b35ad6-e740-4fe1-af84-09a23e731b4f)
 
-SONARQUBE - CODE QUALITY PASSED :-
+
+**SONARQUBE - CODE QUALITY PASSED :-******
 ![Screenshot 2025-02-20 131505](https://github.com/user-attachments/assets/47b69e59-5306-4484-a7fb-235a69846693)
 
-ARGOCD CD STAGE :-
+
+**ARGOCD CD STAGE :-******
 ![Screenshot 2025-02-20 131321](https://github.com/user-attachments/assets/4a01c869-19de-407c-aabe-29cb74779357)
 
