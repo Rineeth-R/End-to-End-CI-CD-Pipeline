@@ -31,5 +31,5 @@ This pipeline ensures continuous integration, continuous delivery (CI/CD), and G
 
 
 **ARGOCD CD STAGE :-**
-![Screenshot 2025-02-20 131321](https://github.com/user-attachments/assets/4a01c869-19de-407c-aabe-29cb74779357)
+![Screenshot 2025-02-20 134952](https://github.com/user-attachments/assets/dd2f1719-792d-444f-893a-0989a1431ceb)
 
