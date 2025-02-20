@@ -1,7 +1,7 @@
 pipeline {
-    agent any   // Use any agent instead of docker
+    agent any   // 
     environment {
-        SONAR_URL = "http://13.51.79.125:9000"
+        SONAR_URL = "http://44.200.195.14:9000"
         GIT_REPO_NAME = "cicd-pipeline"
         GIT_USER_NAME = "Rineeth-R"
         DOCKER_IMAGE = "rineeth05/ultimate-cicd:${BUILD_NUMBER}"
@@ -28,7 +28,7 @@ pipeline {
 
         stage('Static Code Analysis') {
             environment {
-                SONAR_URL = "http://13.51.79.125:9000"
+                SONAR_URL = "http://44.200.195.14:9000"
             }
             steps {
                 withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
