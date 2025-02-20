@@ -9,32 +9,20 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout') {  // ✅ Removed duplicate
             steps {
                 script {
                     checkout scm
-                    sh 'echo "✅ Code checked out successfully!"'
+                    sh '''
+                        git checkout main  # Ensure you're on the main branch
+                        git pull origin main  # Get the latest updates
+                        echo "✅ Code checked out successfully!"
+                    '''
                 }
             }
         }
 
-        stage('Checkout') {
-    steps {
-        script {
-            checkout scm
-            sh '''
-                git checkout main  # Ensure you're on the main branch
-                git pull origin main  # Get the latest updates
-                echo "✅ Code checked out successfully!"
-            '''
-        }
-    }
-}
-
         stage('Static Code Analysis') {
-            environment {
-                SONAR_URL = "http://44.200.195.14:9000"
-            }
             steps {
                 withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
                     script {
@@ -85,7 +73,7 @@ pipeline {
                                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
                                 git add spring-boot-app-manifests/deployment.yml
                                 git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:refs/heads/master
+                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:refs/heads/main
                             else
                                 echo "❌ Error: Deployment file not found!" && exit 1
                             fi
