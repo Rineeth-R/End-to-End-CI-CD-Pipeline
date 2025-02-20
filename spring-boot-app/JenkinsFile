@@ -71,9 +71,14 @@ pipeline {
 
                             if [ -f "spring-boot-app-manifests/deployment.yml" ]; then
                                 sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
-                                git add spring-boot-app-manifests/deployment.yml
-                                git commit -m "Update deployment image to version ${BUILD_NUMBER}"
-                                git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:refs/heads/master
+                                
+                                if git diff --quiet spring-boot-app-manifests/deployment.yml; then
+                                    echo "No changes detected in deployment file. Skipping commit."
+                                else
+                                    git add spring-boot-app-manifests/deployment.yml
+                                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:refs/heads/master
+                                fi
                             else
                                 echo "❌ Error: Deployment file not found!" && exit 1
                             fi
@@ -82,5 +87,5 @@ pipeline {
                 }
             }
         }
-    } // Closing 'stages'
-} // Closing 'pipeline'
+    }
+}
