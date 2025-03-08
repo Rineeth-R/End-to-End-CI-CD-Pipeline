@@ -16,7 +16,7 @@ pipeline {
                     sh '''
                         git checkout master  
                         git pull origin master  # Get the latest updates
-                        echo "✅ Code checked out successfully!"
+                        echo "Code checked out successfully!"
                     '''
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
                                 cd spring-boot-app
                                 mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}
                             else
-                                echo "❌ Error: spring-boot-app directory not found!" && exit 1
+                                echo "Error: spring-boot-app directory not found!" && exit 1
                             fi
                         '''
                     }
@@ -50,7 +50,7 @@ pipeline {
                             cd spring-boot-app
                             docker build -t ${DOCKER_IMAGE} .
                         else
-                            echo "❌ Error: spring-boot-app directory not found!" && exit 1
+                            echo "Error: spring-boot-app directory not found!" && exit 1
                         fi
                     '''
                     def dockerImage = docker.image("${DOCKER_IMAGE}")
@@ -80,7 +80,7 @@ pipeline {
                                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:refs/heads/master
                                 fi
                             else
-                                echo "❌ Error: Deployment file not found!" && exit 1
+                                echo "Error: Deployment file not found!" && exit 1
                             fi
                         '''
                     }
