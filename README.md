@@ -13,7 +13,7 @@ Deployment & Monitoring: Kubernetes, Argo CD
 
 **Pipeline Workflow:**
 
-Code Push & Webhook Trigger → Code pushes to Git automatically trigger the Jenkins pipeline via webhooks.
+Code Push & Webhook Trigger → Code pushed to Git automatically triggers the Jenkins pipeline via webhooks.
 
 Build & Analysis → Maven compiles the application code, and SonarQube performs static code analysis and security vulnerability checks, upholding code quality standards.
 
