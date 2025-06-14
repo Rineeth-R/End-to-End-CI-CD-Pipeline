@@ -14,9 +14,14 @@ Deployment & Monitoring: Kubernetes, Argo CD
 **Pipeline Workflow:**
 
 Code Push & Webhook Trigger → Code pushes to Git automatically trigger the Jenkins pipeline via webhooks.
+
 Build & Analysis → Maven compiles the application code, and SonarQube performs static code analysis and security vulnerability checks, upholding code quality standards.
+
 Testing & Image Creation → Upon successful test execution, a version-controlled Docker image is built and securely pushed to DockerHub, ensuring artifact integrity.
-Automated Deployment → Argo CD detects new image updates in the Git-based manifest repository, automatically pulling and deploying the application to the Kubernetes cluster. This ensures desired state configuration and facilitates rollbacks.
+
+Automated Deployment → Argo CD detects new image updates in the Git-based manifest repository, automatically pulling and deploying the application to the Kubernetes cluster. 
+This ensures desired state configuration and facilitates rollbacks.
+
 This pipeline ensures continuous integration, continuous delivery (CI/CD), and GitOps-based deployments to enhance software reliability and efficiency.
 
 ***PROJECT ARCHITECTURE***
